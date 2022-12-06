@@ -101,9 +101,9 @@ const Mutation = new graphql.GraphQLObjectType({
         addAuthor: {
             type: AuthorType,
             args: {
-                name: {type: GraphQLString},
-                age: {type: GraphQLInt},
-                id: {type: GraphQLID}
+                name: {type: new graphql.GraphQLNonNull(GraphQLString)}, // GraphQLNonNull for args that are required
+                age: {type: new graphql.GraphQLNonNull(GraphQLInt)},
+                id: {type: new graphql.GraphQLNonNull(GraphQLID)}
             },
             resolve(parent, args) {
                 let author = {
@@ -113,6 +113,23 @@ const Mutation = new graphql.GraphQLObjectType({
                 };
                 authors.push(author);
                 return authors[authors.length - 1];
+            }
+        },
+        addBook: {
+            type: BookType,
+            args: {
+                name: {type: new graphql.GraphQLNonNull(GraphQLString)},
+                genre: {type: new graphql.GraphQLNonNull(GraphQLString)},
+                authorId: {type: new graphql.GraphQLNonNull(GraphQLID)}
+            },
+            resolve (parent, args) {
+                let book = {
+                    name: args.name,
+                    genre: args.genre,
+                    authorId: args.authorId
+                };
+                books.push(book);
+                return books[books.length-1];
             }
         }
     }
