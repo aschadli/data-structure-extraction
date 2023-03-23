@@ -32,7 +32,7 @@ npm install
 node server.js
 ```
 - Der Server hört nun an http://localhost:4000/
-- Im Browser kann nun durch Aufrufen der subfolder graphiql die GraphiQL-Website aufgerufen werden, also http://localhost:4000/graphiql
+- Im Browser kann nun durch Aufrufen der subfolder graphql die GraphiQL-Website aufgerufen werden, also http://localhost:4000/graphql
 
 <br>
 
