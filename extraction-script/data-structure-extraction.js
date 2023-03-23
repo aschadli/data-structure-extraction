@@ -71,50 +71,28 @@ async function processData(data) {
     name: field.name,
     type: field.type.name,
     kind: field.type.kind,
-    ofType: field.type.ofType
-      ? {
-          name: field.type.ofType.name,
-          kind: field.type.ofType.kind
-        }
-      : null,
+    ofType: field.type.ofType,
     args: field.args.map(arg => ({
       name: arg.name,
       type: arg.type.name,
       kind: arg.type.kind,
-      ofType: arg.type.ofType
-        ? {
-            name: arg.type.ofType.name,
-            kind: arg.type.ofType.kind
-          }
-        : null
+      ofType: field.type.ofType,
     }))
   }));
   const mutationFields = data.__schema.mutationType.fields.map(field => ({
     name: field.name,
     type: field.type.name,
     kind: field.type.kind,
-    ofType: field.type.ofType
-      ? {
-          name: field.type.ofType.name,
-          kind: field.type.ofType.kind
-        }
-      : null,
+    ofType: field.type.ofType,
     args: field.args.map(arg => ({
       name: arg.name,
       type: arg.type.name,
       kind: arg.type.kind,
-      ofType: arg.type.ofType
-        ? {
-            name: arg.type.ofType.name,
-            kind: arg.type.ofType.kind
-          }
-        : null
+      ofType: arg.type.ofType,
     }))
   }));
   console.log('Query Fields: ', JSON.stringify(queryFields, null, 2));
   console.log('Mutation Fields: ', JSON.stringify(mutationFields, null, 2));
-
-  console.log(data.__schema.mutationType.fields[0].args[0].type.ofType);
 }
 
 async function main() {
